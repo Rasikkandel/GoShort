@@ -7,7 +7,6 @@ def base62(num):
         return BASE62[0]
 
     result = []
-    
     while num > 0:
         remainder = num % 62
         result.append(BASE62[remainder])
