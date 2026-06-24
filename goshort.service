@@ -1,0 +1,32 @@
+[Unit]
+Description=GoShort Gunicorn Application
+After=network.target postgresql.service
+
+[Service]
+Type=notify
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/goshort
+Environment="PATH=/var/www/goshort/venv/bin"
+Environment="DJANGO_SETTINGS_MODULE=shorturl.settings"
+EnvironmentFile=/var/www/goshort/.env
+
+ExecStart=/var/www/goshort/venv/bin/gunicorn \
+    --config /var/www/goshort/gunicorn_config.py \
+    --error-logfile /var/log/goshort/error.log \
+    --access-logfile /var/log/goshort/access.log \
+    shorturl.wsgi:application
+
+ExecReload=/bin/kill -s HUP $MAINPID
+Restart=on-failure
+RestartSec=10s
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/var/www/goshort /var/log/goshort
+
+[Install]
+WantedBy=multi-user.target
