@@ -1,6 +1,12 @@
 # GoShort - Production-Grade URL Shortener
 
-A modern, scalable, and secure URL shortening service built with Django.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub](https://img.shields.io/badge/GitHub-GoShort-blue)](https://github.com/Rasikkandel/GoShort)
+[![Open Source](https://img.shields.io/badge/Open%20Source-%E2%9C%93-brightgreen)](https://opensource.org/)
+
+A modern, scalable, and secure URL shortening service built with Django. This is an open source project made with ❤️ by [Rasik Kandel](https://github.com/Rasikkandel).
+
+**📢 Contributions Welcome!** We're looking for developers, designers, and documentation writers to help improve GoShort. See [Contributing](#contributing) to get started.
 
 ## Features
 
@@ -37,11 +43,6 @@ A modern, scalable, and secure URL shortening service built with Django.
 - Zero-downtime deployment ready
 
 📊 **Monitoring**
-- Structured logging
-- Error tracking
-- Application metrics
-- Performance monitoring
-
 ## Quick Start
 
 ### Prerequisites
@@ -282,15 +283,153 @@ sudo systemctl status postgresql
 
 ## Contributing
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+We welcome contributions from the community! Whether you're fixing bugs, adding features, improving documentation, or helping with design, your contributions are valued.
+
+### How to Contribute
+
+1. **Fork the repository**
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/GoShort.git
+   cd GoShort
+   ```
+
+2. **Create a feature branch**
+   ```bash
+   git checkout -b feature/amazing-feature
+   ```
+
+3. **Set up development environment**
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate
+   pip install -r requirements.txt
+   cp .env.example .env
+   python manage.py migrate
+   ```
+
+4. **Make your changes**
+   - Follow PEP 8 style guide
+   - Write clear commit messages
+   - Add tests for new features
+   - Update documentation as needed
+
+5. **Test your changes**
+   ```bash
+   python manage.py test
+   python manage.py runserver
+   ```
+
+6. **Commit and push**
+   ```bash
+   git commit -m 'feat: Add amazing feature'
+   git push origin feature/amazing-feature
+   ```
+
+7. **Open a Pull Request**
+   - Provide a clear description of changes
+   - Reference any related issues
+   - Include screenshots if UI changes are made
+
+### Contribution Areas
+
+We're looking for help with:
+- 🐛 **Bug fixes** - Found an issue? Help us fix it!
+- ✨ **New features** - Have a great idea? Implement it!
+- 📚 **Documentation** - Help improve our guides and tutorials
+- 🎨 **UI/UX improvements** - Enhance the design and usability
+- 🧪 **Testing** - Add unit tests and integration tests
+- 📦 **DevOps** - Improve deployment and CI/CD processes
+- 🌍 **Internationalization** - Add support for multiple languages
+
+### Reporting Issues
+
+Found a bug? Have a suggestion? Please create an issue!
+
+1. **Go to [Issues](https://github.com/Rasikkandel/GoShort/issues)**
+2. **Click "New Issue"**
+3. **Provide:**
+   - Clear title and description
+   - Steps to reproduce (for bugs)
+   - Expected behavior
+   - Your environment (Django version, Python version, OS)
+   - Screenshots if applicable
+
+### Code of Conduct
+
+We are committed to providing a welcoming and inclusive environment for all contributors. Please:
+- Be respectful and inclusive
+- Provide constructive feedback
+- Focus on the code, not the person
+- Help each other learn and grow
+
+Unacceptable behavior includes:
+- Harassment or discrimination
+- Disrespectful language
+- Personal attacks
+- Spam or commercial promotion
+
+Violations will be taken seriously and may result in removal from the project.
+
+### Development Guidelines
+
+- **Code Style**: Follow [PEP 8](https://www.python.org/dev/peps/pep-0008/)
+- **Django Best Practices**: Follow [Django documentation](https://docs.djangoproject.com/)
+- **Commit Messages**: Use conventional commits (feat:, fix:, docs:, etc.)
+- **Testing**: Aim for >80% code coverage
+- **Documentation**: Update docs for new features
+
+### Questions?
+
+Join our discussions:
+- 💬 [GitHub Discussions](https://github.com/Rasikkandel/GoShort/discussions)
+- 📧 Create an issue with your question
 
 ## License
 
-This project is licensed under the MIT License - see LICENSE file for details.
+This project is licensed under the **MIT License** - see [LICENSE](LICENSE) file for details.
+
+### What MIT License Means
+- ✅ **Free to use** - Personal, commercial, or educational use
+- ✅ **Free to modify** - Change the code as you like
+- ✅ **Free to distribute** - Share with others
+- ⚠️ **Attribution required** - Include original copyright notice
+- ⚠️ **No warranty** - Use at your own risk
+
+## Creator
+
+**Made with ❤️ by [Rasik Kandel](https://github.com/Rasikkandel)**
+
+If you find this project useful, please:
+- ⭐ **Star the repository** on GitHub
+- 🔗 **Share** with others
+- 🤝 **Contribute** to improve it
+- 💬 **Provide feedback**
+
+## Getting Help
+
+### Documentation
+- 📖 [DEPLOYMENT.md](DEPLOYMENT.md) - Complete deployment guide
+- ⚡ [QUICKSTART.md](QUICKSTART.md) - Quick setup guides
+- ✅ [PRODUCTION_CHECKLIST.md](PRODUCTION_CHECKLIST.md) - Pre-deployment checklist
+- 📊 [PRODUCTION_SUMMARY.md](PRODUCTION_SUMMARY.md) - Production setup overview
+
+### External Resources
+- 🐍 [Django Documentation](https://docs.djangoproject.com/)
+- 📚 [Gunicorn Docs](https://docs.gunicorn.org/)
+- 🌐 [Nginx Docs](https://nginx.org/en/docs/)
+- 🐘 [PostgreSQL Docs](https://www.postgresql.org/docs/)
+- 📦 [Docker Docs](https://docs.docker.com/)
+
+### Community Support
+- 🐛 [Report Issues](https://github.com/Rasikkandel/GoShort/issues)
+- 💬 [GitHub Discussions](https://github.com/Rasikkandel/GoShort/discussions)
+- ⭐ [Star on GitHub](https://github.com/Rasikkandel/GoShort)
+
+## Related Projects
+
+Check out these similar open source projects:
+- [Shorty](https://github.com/search?q=url+shortener&type=repositories)
+- [Your Link Shortener](https://github.com/topics/url-shortener)
 
 ## Support
 
@@ -312,11 +451,69 @@ For issues, questions, or suggestions:
 - ✅ Docker support
 - ✅ Comprehensive documentation
 
+## Roadmap
+
+We're planning the following features for future releases:
+
+### v1.1.0 (Planned)
+- [ ] RESTful API with authentication
+- [ ] Custom short codes
+- [ ] QR code generation
+- [ ] Expiring links
+- [ ] Link password protection
+- [ ] Advanced analytics dashboard
+
+### v1.2.0 (Planned)
+- [ ] OAuth2 user authentication
+- [ ] User accounts and link management
+- [ ] API key management
+- [ ] Webhook support
+- [ ] Integration with third-party services
+
+### v2.0.0 (Planned)
+- [ ] Multi-tenant architecture
+- [ ] Advanced caching strategies
+- [ ] Machine learning based link recommendations
+- [ ] Real-time analytics with WebSockets
+- [ ] Mobile app (iOS/Android)
+
+**Want to help with these features?** [Create an issue](https://github.com/Rasikkandel/GoShort/issues) or [start a discussion](https://github.com/Rasikkandel/GoShort/discussions)!
+
 ## Acknowledgments
 
-- Django Framework
-- Bootstrap 5
-- Font Awesome Icons
-- PostgreSQL
-- Nginx
-- Gunicorn
+**GoShort** is built on top of amazing open source projects:
+
+### Core Framework
+- 🐍 **Django** - Web framework for Python
+- 🌐 **PostgreSQL** - Powerful, open source relational database
+- 💾 **Redis** - In-memory data structure store
+- 🌍 **Nginx** - High-performance web server
+- 🚀 **Gunicorn** - Python WSGI HTTP Server
+
+### Frontend
+- 🎨 **Bootstrap 5** - CSS framework
+- 📌 **Font Awesome** - Icon library
+- ✨ **jQuery** - JavaScript library
+
+### Development Tools
+- 📦 **Docker** - Containerization platform
+- 🔧 **Python** - Programming language
+- 💻 **Git** - Version control
+
+### Special Thanks
+- Django community for excellent documentation
+- Bootstrap team for beautiful components
+- All open source contributors making this possible
+- **GitHub** for hosting and collaboration tools
+
+### Contributors
+See [GitHub Contributors](https://github.com/Rasikkandel/GoShort/graphs/contributors) for the full list.
+
+### Created By
+**Rasik Kandel** - [GitHub Profile](https://github.com/Rasikkandel)
+
+If you find this project helpful, please:
+- ⭐ **Star this repository**
+- 🔗 **Share with others**
+- 🤝 **Contribute to the project**
+- 💬 **Provide feedback**
