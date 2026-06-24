@@ -4,7 +4,7 @@
 [![GitHub](https://img.shields.io/badge/GitHub-GoShort-blue)](https://github.com/Rasikkandel/GoShort)
 [![Open Source](https://img.shields.io/badge/Open%20Source-%E2%9C%93-brightgreen)](https://opensource.org/)
 
-A modern, scalable, and secure URL shortening service built with Django. This is an open source project made with ❤️ by [Rasik Kandel](https://github.com/Rasikkandel).
+A modern, scalable, and secure URL shortening service built with Django. 
 
 **📢 Contributions Welcome!** We're looking for developers, designers, and documentation writers to help improve GoShort. See [Contributing](#contributing) to get started.
 
