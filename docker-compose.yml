@@ -1,0 +1,76 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: goshort_db
+    environment:
+      POSTGRES_DB: goshort
+      POSTGRES_USER: goshort_user
+      POSTGRES_PASSWORD: change_me_in_production
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U goshort_user"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: goshort_redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  web:
+    build: .
+    container_name: goshort_web
+    command: gunicorn --config gunicorn_config.py shorturl.wsgi:application
+    volumes:
+      - .:/app
+      - static_volume:/app/staticfiles
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=False
+      - DB_ENGINE=django.db.backends.postgresql
+      - DB_NAME=goshort
+      - DB_USER=goshort_user
+      - DB_PASSWORD=change_me_in_production
+      - DB_HOST=db
+      - DB_PORT=5432
+      - REDIS_URL=redis://redis:6379/0
+      - SECRET_KEY=your-super-secret-key-change-this
+      - ALLOWED_HOSTS=localhost,127.0.0.1,yourdomain.com
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  nginx:
+    image: nginx:alpine
+    container_name: goshort_nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - static_volume:/app/staticfiles:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - web
+
+volumes:
+  postgres_data:
+  redis_data:
+  static_volume:
