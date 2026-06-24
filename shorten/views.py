@@ -4,28 +4,9 @@ from django.views.decorators.http import require_http_methods
 from django.contrib import messages
 from django.db.models import Sum, Avg
 from django.urls import reverse
-import string
-import random
 from .models import long_urls
-
-BASE62 = string.digits + string.ascii_letters
-
-def base62_encode(num):
-    """Convert a number to base62"""
-    if num == 0:
-        return BASE62[0]
-    
-    result = []
-    while num > 0:
-        remainder = num % 62
-        result.append(BASE62[remainder])
-        num //= 62
-    
-    return ''.join(reversed(result))
-
-def generate_short_code(length=6):
-    """Generate a random short code"""
-    return ''.join(random.choices(string.ascii_letters + string.digits, k=length))
+from .utils import generate_short_code
+from .constants import ERROR_EMPTY_URL, ERROR_URL_CREATION, SUCCESS_URL_CREATED, SUCCESS_URL_DELETED
 
 @require_http_methods(["GET", "POST"])
 def index(request):
@@ -37,7 +18,7 @@ def index(request):
         long_url = request.POST.get('long_url', '').strip()
         
         if not long_url:
-            messages.error(request, 'Please enter a URL')
+            messages.error(request, ERROR_EMPTY_URL)
         else:
             try:
                 # Check if URL already exists
@@ -58,9 +39,9 @@ def index(request):
                 
                 # Build the short URL
                 short_url = request.build_absolute_uri(reverse('redirect_short', kwargs={'short_code': shortened_url.short_code}))
-                messages.success(request, 'URL shortened successfully!')
+                messages.success(request, SUCCESS_URL_CREATED)
             except Exception as e:
-                messages.error(request, f'Error creating short URL: {str(e)}')
+                messages.error(request, ERROR_URL_CREATION.format(str(e)))
     
     context = {
         'shortened_url': shortened_url,
@@ -98,5 +79,5 @@ def delete_link(request, link_id):
     """Delete a shortened URL"""
     url_entry = get_object_or_404(long_urls, id=link_id)
     url_entry.delete()
-    messages.success(request, 'Link deleted successfully!')
+    messages.success(request, SUCCESS_URL_DELETED)
     return redirect('links') 
