@@ -17,7 +17,7 @@ LOW_CLICK_THRESHOLD = 10
 MEDIUM_CLICK_THRESHOLD = 100
 
 # Error messages
-ERROR_EMPTY_URL = 'Please enter a URL'
+ERROR_EMPTY_URL = 'error: Please enter a URL'
 ERROR_INVALID_URL = 'Invalid URL format'
 ERROR_URL_CREATION = 'Error creating short URL: {}'
 ERROR_URL_NOT_FOUND = 'Short URL not found'
